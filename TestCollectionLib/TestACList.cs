@@ -14,28 +14,39 @@
    limitations under the License.
 */
 
+using ACLibrary.Collection;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace ACLibrary.Collection
+namespace TestCollectionLib
 {
-    public class ACList<Element> : List<Element>
+    [TestClass]
+    public class TestACList
     {
-        public Element Get(int index)
+        ACList<int> acl;
+        List<int> sl;
+
+        [TestInitialize]
+        public void Setup()
         {
-            return this[index];
+            sl = new List<int>();
+            sl.Add(1);
+            sl.Add(2);
+
+            acl = new ACList<int>();
         }
 
-        public void AddAll<E>(ICollection<E> c) where E : Element
+        [TestMethod]
+        public void TestAddAll()
         {
-            foreach (E e in c)
-            {
-                Add(e);
-            }
+            acl.AddAll(sl);
+            Assert.AreEqual(1, acl[0]);
         }
 
-        public bool IsEmpty()
+        [TestMethod]
+        public void TestIsEmpty()
         {
-            return this.Count == 0;
+            Assert.AreEqual(true, new ACList<int>().IsEmpty());
         }
     }
 }

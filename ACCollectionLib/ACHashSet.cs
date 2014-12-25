@@ -14,15 +14,18 @@
    limitations under the License.
 */
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace ACLibrary.Collection
 {
-    public class ACList<Element> : List<Element>
+    public class ACHashSet<Element> : HashSet<Element>
     {
-        public Element Get(int index)
+        public bool IsEmpty()
         {
-            return this[index];
+            return Count == 0;
         }
 
         public void AddAll<E>(ICollection<E> c) where E : Element
@@ -31,11 +34,6 @@ namespace ACLibrary.Collection
             {
                 Add(e);
             }
-        }
-
-        public bool IsEmpty()
-        {
-            return this.Count == 0;
         }
     }
 }

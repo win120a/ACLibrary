@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="ACDictionary.cs" />
     <Compile Include="ACList.cs" />
+    <Compile Include="ACHashSet.cs" />
+    <Compile Include="Convert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -24,6 +24,7 @@ namespace ACLibrary.GUI
 {
     public class SelectBoxData
     {
+        // ComboBox
 
     }
 }
