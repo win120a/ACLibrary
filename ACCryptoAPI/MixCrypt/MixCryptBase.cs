@@ -20,8 +20,11 @@
  */
 
 
-namespace ACLibrary.Crypto
+namespace ACLibrary.Crypto.MixCryptSeries
 {
+    /// <summary>
+    /// The MixCrypt base interface.
+    /// </summary>
     public interface MixCryptBase : ICryptoProvider
     {
     }

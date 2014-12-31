@@ -25,8 +25,17 @@ namespace ACLibrary.Crypto
 {
     namespace MixCryptSeries
     {
+        /// <summary>
+        /// The Stronger MixCrypt encryption class. (3RC2 + 3DES + 3AES)
+        /// </summary>
         public class Stronger : MixCryptBase
         {
+            /// <summary>
+            /// The Encryption method.
+            /// </summary>
+            /// <param name="plainText">The string to encrypt.</param>
+            /// <param name="password">The password.</param>
+            /// <returns>The encrypted string.</returns>
             public String EncryptString(String plainText, String password)
             {
                 // 3RC2
@@ -52,6 +61,12 @@ namespace ACLibrary.Crypto
                 // Use Casts: rc2(rc2(rc2(aes(aes(aes(des(des(des($content)))))))));
             }
 
+            /// <summary>
+            /// The Decryption method.
+            /// </summary>
+            /// <param name="Source">The string to decrypt.</param>
+            /// <param name="password">The password.</param>
+            /// <returns>The decrypted string.</returns>
             public String DecryptString(String Source, String password)
             {
                 // string plain = testEncrypt.DecryptString(encText, password);

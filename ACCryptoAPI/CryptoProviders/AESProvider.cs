@@ -26,8 +26,16 @@ using System.Text;
 
 namespace ACLibrary.Crypto
 {
+    /// <summary>
+    /// The AES encryption provider.
+    /// </summary>
     public class AESProvider : ICryptoProvider
     {
+        /// <summary>
+        /// Create cipher object.
+        /// </summary>
+        /// <param name="key">The password.</param>
+        /// <returns>The cipher object.</returns>
         static Aes CreateAES(string key)
         {
             MD5 md5 = new MD5CryptoServiceProvider();
@@ -37,7 +45,12 @@ namespace ACLibrary.Crypto
             return aes;
         }
 
-
+        /// <summary>
+        /// The Encryption method.
+        /// </summary>
+        /// <param name="plainText">The string to encrypt.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>The encrypted string.</returns>
         public string EncryptString(string plainText, string password)
         {
             // first we convert the plain text into a byte array
@@ -60,6 +73,12 @@ namespace ACLibrary.Crypto
             return Convert.ToBase64String(myStream.ToArray());
         }
 
+        /// <summary>
+        /// The Decryption method.
+        /// </summary>
+        /// <param name="encryptedText">The string to decrypt.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>The decrypted string.</returns>
         public string DecryptString(string encryptedText, string password)
         {
             // convert our encrypted string to a byte array

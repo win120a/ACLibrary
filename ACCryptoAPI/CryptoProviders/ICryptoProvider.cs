@@ -22,9 +22,25 @@
 
 namespace ACLibrary.Crypto
 {
+    /// <summary>
+    /// The base interface of all crypto providers in this library.
+    /// </summary>
     public interface ICryptoProvider
     {
+        /// <summary>
+        /// The Encryption method.
+        /// </summary>
+        /// <param name="plainText">The string to encrypt.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>The encrypted string.</returns>
         string EncryptString(string plainText, string password);
+
+        /// <summary>
+        /// The Decryption method.
+        /// </summary>
+        /// <param name="encryptedText">The string to decrypt.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>The decrypted string.</returns>
         string DecryptString(string encryptedText, string password);
     }
 }

@@ -25,8 +25,17 @@ namespace ACLibrary.Crypto
 {
     namespace MixCryptSeries
     {
+        /// <summary>
+        /// The Weaker MixCrypt encryption class. (3AES)
+        /// </summary>
         public class Weaker : MixCryptBase
         {
+            /// <summary>
+            /// The Encryption method.
+            /// </summary>
+            /// <param name="plainText">The string to encrypt.</param>
+            /// <param name="password">The password.</param>
+            /// <returns>The encrypted string.</returns>
             public String EncryptString(String plainText, String password)
             {
                 // 3AES
@@ -39,6 +48,12 @@ namespace ACLibrary.Crypto
                 // Use Casts: aes(aes(aes($content)));
             }
 
+            /// <summary>
+            /// The Decryption method.
+            /// </summary>
+            /// <param name="Source">The string to decrypt.</param>
+            /// <param name="password">The password.</param>
+            /// <returns>The decrypted string.</returns>
             public String DecryptString(String Source, String password)
             {
                 // string plain = testEncrypt.DecryptString(encText, password);

@@ -25,8 +25,17 @@ namespace ACLibrary.Crypto
 {
     namespace MixCryptSeries
     {
+        /// <summary>
+        /// The Strongest MixCrypt encryption class. (3Rijndael + 3RC2 + 3DES + 3AES)
+        /// </summary>
         public class Strongest : MixCryptBase
         {
+            /// <summary>
+            /// The Encryption method.
+            /// </summary>
+            /// <param name="plainText">The string to encrypt.</param>
+            /// <param name="password">The password.</param>
+            /// <returns>The encrypted string.</returns>
             public String EncryptString(String plainText, String password)
             {
                 // 3Rijndael
@@ -56,6 +65,12 @@ namespace ACLibrary.Crypto
                 return aes3;
             }
 
+            /// <summary>
+            /// The Decryption method.
+            /// </summary>
+            /// <param name="Source">The string to decrypt.</param>
+            /// <param name="password">The password.</param>
+            /// <returns>The decrypted string.</returns>
             public String DecryptString(String Source, String password)
             {
                 // string plain = testEncrypt.DecryptString(encText, password);

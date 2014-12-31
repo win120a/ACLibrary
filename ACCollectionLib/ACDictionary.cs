@@ -25,6 +25,21 @@ namespace ACLibrary.Collection
             return this[key];
         }
 
+        public K GetKeyByValue(V value)
+        {
+            foreach (K k in KeyList())
+            {
+                object ko = k;
+                object vo = value;
+
+                if (ko == vo)
+                {
+                    return k;
+                }
+            }
+            return default(K);
+        }
+
         public HashSet<K> KeySet()
         {
             HashSet<K> ks = new HashSet<K>();
