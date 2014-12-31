@@ -20,7 +20,7 @@
  */
 
 
-namespace ACLibrary.Crypto
+namespace ACLibrary.Crypto.CryptoProviders
 {
     /// <summary>
     /// The base interface of all crypto providers in this library.

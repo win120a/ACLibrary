@@ -24,7 +24,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace ACLibrary.Crypto
+namespace ACLibrary.Crypto.CryptoProviders
 {
     /// <summary>
     /// The RC2 encryption provider.

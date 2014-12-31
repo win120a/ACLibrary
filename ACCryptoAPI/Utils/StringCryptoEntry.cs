@@ -19,6 +19,8 @@
  * Copyright (C) Microsoft Corporation
  */
 
+using ACLibrary.Crypto.CryptoProviders;
+
 namespace ACLibrary.Crypto.Utils
 {
     /// <summary>
