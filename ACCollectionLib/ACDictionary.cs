@@ -29,10 +29,7 @@ namespace ACLibrary.Collection
         {
             foreach (K k in KeyList())
             {
-                object ko = k;
-                object vo = value;
-
-                if (ko == vo)
+                if (Equals(Get(k), value))
                 {
                     return k;
                 }
@@ -86,6 +83,11 @@ namespace ACLibrary.Collection
             }
 
             return vl;
+        }
+
+        public bool IsEmpty()
+        {
+            return Count == 0;
         }
     }
 }
