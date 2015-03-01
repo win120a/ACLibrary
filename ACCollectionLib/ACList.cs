@@ -14,28 +14,98 @@
    limitations under the License.
 */
 
+using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace ACLibrary.Collection
 {
-    public class ACList<Element> : List<Element>
+    /// <summary>
+    /// A extended List object.
+    /// </summary>
+    /// <typeparam name="Element">The element.</typeparam>
+    public class ACList<Element> : List<Element>, IACCollection<Element>
     {
+        /// <summary>
+        /// Get the value of index.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns>The value of index.</returns>
         public Element Get(int index)
         {
             return this[index];
         }
 
+        /// <summary>
+        /// Add all items in a collection to this set.
+        /// </summary>
+        /// <typeparam name="E">The element.</typeparam>
+        /// <param name="c">The collection.</param>
         public void AddAll<E>(ICollection<E> c) where E : Element
         {
+            if (c is IDictionary)
+            {
+                throw new NotSupportedException();
+            }
+
             foreach (E e in c)
             {
                 Add(e);
             }
         }
 
+        /// <summary>
+        /// Check the dictionary is empty.
+        /// </summary>
+        /// <returns>The result.</returns>
         public bool IsEmpty()
         {
             return this.Count == 0;
+        }
+
+        /// <summary>
+        /// Convert the system collection (List) to AC Collection (ACList).
+        /// </summary>
+        /// <param name="c">The system collection.</param>
+        /// <returns>A AC Collection contains all elements in system collection.</returns>
+        public static IACCollection<Element> SystemCollection2ACCollection(ICollection<Element> c)
+        {
+            ACList<Element> al = new ACList<Element>();
+
+            foreach (Element e in c)
+            {
+                al.Add(e);
+            }
+
+            return al;
+        }
+
+        /// <summary>
+        /// Convert the AC collection (ACList) to system Collection (List).
+        /// </summary>
+        /// <returns>A system Collection contains all elements in AC collection.</returns>
+        public ICollection<Element> ToSystemCollection()
+        {
+            List<Element> l = new List<Element>();
+
+            foreach (Element e in this)
+            {
+                l.Add(e);
+            }
+
+            return l;
+        }
+
+        /// <summary>
+        /// Add all system collection items to this collection.
+        /// </summary>
+        /// <param name="c">The system collection.</param>
+        public void AddAllSystemCollectionItems(ICollection<Element> c)
+        {
+            foreach (Element e in c)
+            {
+                Add(e);
+            }
         }
     }
 }

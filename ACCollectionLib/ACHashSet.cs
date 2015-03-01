@@ -15,22 +15,84 @@
 */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ACLibrary.Collection
 {
-    public class ACHashSet<Element> : HashSet<Element>
+    /// <summary>
+    /// A extended HashSet object.
+    /// </summary>
+    /// <typeparam name="Element">The element.</typeparam>
+    public class ACHashSet<Element> : HashSet<Element>, IACCollection<Element>
     {
+        /// <summary>
+        /// Check the dictionary is empty.
+        /// </summary>
+        /// <returns>The result.</returns>
         public bool IsEmpty()
         {
             return Count == 0;
         }
 
+        /// <summary>
+        /// Add all items in a collection to this set.
+        /// </summary>
+        /// <typeparam name="E">The element.</typeparam>
+        /// <param name="c">The collection.</param>
         public void AddAll<E>(ICollection<E> c) where E : Element
         {
+            if (c is IDictionary)
+            {
+                throw new NotSupportedException();
+            }
+
             foreach (E e in c)
+            {
+                Add(e);
+            }
+        }
+
+        /// <summary>
+        /// Convert the system collection (HashSet) to AC Collection (ACHashSet).
+        /// </summary>
+        /// <param name="c">The system collection.</param>
+        /// <returns>A AC Collection contains all elements in system collection.</returns>
+        public static ACHashSet<Element> SystemCollection2ACCollection(ICollection<Element> c)
+        {
+            ACHashSet<Element> ahs = new ACHashSet<Element>();
+
+            foreach (Element e in c)
+            {
+                ahs.Add(e);
+            }
+
+            return ahs;
+        }
+
+        /// <summary>
+        /// Convert the AC collection (ACHashSet) to system Collection (HashSet).
+        /// </summary>
+        /// <returns>A system Collection contains all elements in AC collection.</returns>
+        public ICollection<Element> ToSystemCollection()
+        {
+            HashSet<Element> hs = new HashSet<Element>();
+
+            foreach (Element e in this)
+            {
+                hs.Add(e);
+            }
+
+            return hs;
+        }
+
+        /// <summary>
+        /// Add all system collection items to this collection.
+        /// </summary>
+        /// <param name="c">The system collection.</param>
+        public void AddAllSystemCollectionItems(ICollection<Element> c)
+        {
+            foreach (Element e in c)
             {
                 Add(e);
             }

@@ -54,6 +54,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="TestACHashSet.cs" />
     <Compile Include="TestACList.cs" />
     <Compile Include="TestConvert.cs" />
     <Compile Include="TestDictionary.cs" />

@@ -38,15 +38,15 @@ namespace TestCollectionLib
         [TestMethod]
         public void TestDict2ACDict()
         {
-            testADict = Convert.KeyValueConvert<string, int>.DictionaryToACDictionary(testODict);
+            testADict = (ACDictionary<string, int>) ACDictionary<string, int>.SystemCollection2ACCollection(testODict);
             Assert.AreEqual(1, testADict.Get("First"));
         }
 
         [TestMethod]
         public void TestACDict2SDict()
         {
-            testADict = Convert.KeyValueConvert<string, int>.DictionaryToACDictionary(testODict);
-            anotherTestODict = Convert.KeyValueConvert<string, int>.ACDictionaryToDictionary(testADict);
+            testADict = (ACDictionary<string, int>)ACDictionary<string, int>.SystemCollection2ACCollection(testODict);
+            anotherTestODict = (Dictionary<string, int>) testADict.ToSystemCollection();
             Assert.AreEqual(1, anotherTestODict["First"]);
         }
     }
