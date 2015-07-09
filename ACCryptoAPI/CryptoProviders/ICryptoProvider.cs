@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright (C) 2011-2014 AC Inc. (Andy Cheung)
+   Copyright (C) 2011-2015 AC Inc. (Andy Cheung)
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@
  * Based on MVA's 20 C# Question Explained.
  * Copyright (C) Microsoft Corporation
  */
-
 
 namespace ACLibrary.Crypto.CryptoProviders
 {
