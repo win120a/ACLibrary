@@ -171,5 +171,24 @@ namespace ACLibrary.Collection
 
             return ad;
         }
+
+        /// <summary>
+        /// Check the key exists or not.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns>If exists, true; otherwise, false.</returns>
+        public bool Exists(K key)
+        {
+            V test = default(V);
+
+            if (TryGetValue(key, out test))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

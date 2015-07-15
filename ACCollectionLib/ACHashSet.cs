@@ -97,5 +97,25 @@ namespace ACLibrary.Collection
                 Add(e);
             }
         }
+
+        /// <summary>
+        /// Check the element exists or not.
+        /// </summary>
+        /// <param name="pe">The element.</param>
+        /// <returns>If exists, true; otherwise, false.</returns>
+        public bool Exists(Element pe)
+        {
+            bool flag = false;
+
+            foreach (Element e in this)
+            {
+                if (Object.Equals(pe, e))
+                {
+                    flag = true;
+                }
+            }
+
+            return flag;
+        }
     }
 }
