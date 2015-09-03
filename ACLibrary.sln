@@ -33,6 +33,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNetworkLib", "TestNetwo
 		{FB647FD7-F895-4A44-A32A-F4CFFB23D311} = {FB647FD7-F895-4A44-A32A-F4CFFB23D311}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSignApp", "TestSignApp\TestSignApp.csproj", "{94D07598-B2B7-4DF9-A01F-FAD236F2E04C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4DC6064C-1623-4C6E-AD7D-D948770F2235} = {4DC6064C-1623-4C6E-AD7D-D948770F2235}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +80,10 @@ Global
 		{A54B48B7-0AC0-412B-A622-E4338F1CACFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A54B48B7-0AC0-412B-A622-E4338F1CACFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A54B48B7-0AC0-412B-A622-E4338F1CACFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94D07598-B2B7-4DF9-A01F-FAD236F2E04C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94D07598-B2B7-4DF9-A01F-FAD236F2E04C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94D07598-B2B7-4DF9-A01F-FAD236F2E04C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94D07598-B2B7-4DF9-A01F-FAD236F2E04C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
