@@ -19,10 +19,18 @@ using System.Security.Cryptography;
 
 namespace ACLibrary.Crypto.HashingAndSignture.Providers
 {
+    /// <summary>
+    /// Provides SHA256 hashing functions.
+    /// </summary>
     public class SHA256Provider : CngProvider
     {
         SHA256Cng instance = new SHA256Cng();
 
+        /// <summary>
+        /// Compute Hash of the file.
+        /// </summary>
+        /// <param name="path">The path of the file.</param>
+        /// <returns>The hash.</returns>
         public byte[] ComputeFile(string path)
         {
             StreamReader sr = new StreamReader(path);
@@ -32,6 +40,16 @@ namespace ACLibrary.Crypto.HashingAndSignture.Providers
             sr.Close();
 
             return b;
+        }
+
+        /// <summary>
+        /// Compute Hash of the byte array.
+        /// </summary>
+        /// <param name="path">The data.</param>
+        /// <returns>The hash.</returns>
+        public byte[] ComputeHash(byte[] data)
+        {
+            return instance.ComputeHash(data);
         }
     }
 }

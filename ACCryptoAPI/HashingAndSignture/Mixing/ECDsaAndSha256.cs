@@ -22,8 +22,18 @@ using System.Text;
 
 namespace ACLibrary.Crypto.HashingAndSignture.Mixing
 {
+    /// <summary>
+    /// A mixed H & S Method uses ECDsa and SHA256.
+    /// </summary>
     public class ECDsaAndSha256
     {
+        /// <summary>
+        /// Check Sign.
+        /// </summary>
+        /// <param name="signFile">The signture file.</param>
+        /// <param name="verifyFile">The file need to verify.</param>
+        /// <param name="ecdSaKeyFile">The ECDsa Public keyring.</param>
+        /// <returns>Result.</returns>
         public bool Check(string signFile, string verifyFile, string ecdSaKeyFile)
         {
             StreamReader sr = new StreamReader(signFile);

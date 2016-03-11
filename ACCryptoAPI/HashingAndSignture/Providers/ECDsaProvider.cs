@@ -47,9 +47,8 @@ namespace ACLibrary.Crypto.HashingAndSignture.Providers
             }
         }
 
-        public ECDsaProvider()
+        public ECDsaProvider() : this("myKey", null)
         {
-            new ECDsaProvider("myKey", null);
         }
 
         private ECDsaProvider(int nr)

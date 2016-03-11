@@ -18,7 +18,7 @@ using ACLibrary.Collection;
 using System;
 using System.Windows.Forms;
 
-namespace ACLibrary.GUI.WinForm
+namespace ACLibrary.GUI.WinFormElement
 {
     /// <summary>
     /// Stores the comboBox's Data (In windows form) and help it shows.

@@ -20,6 +20,9 @@ using System.Text;
 
 namespace ACLibrary.Crypto.HashingAndSignture.Providers
 {
+    /// <summary>
+    /// Repersents a CNG crypto provider.
+    /// </summary>
     public abstract class CngProvider
     {
         private CngKey GenerateCngKey(CngAlgorithm ca)
@@ -27,6 +30,12 @@ namespace ACLibrary.Crypto.HashingAndSignture.Providers
             return CngKey.Create(ca);
         }
 
+        /// <summary>
+        /// Create a CNG Key and form as string.
+        /// </summary>
+        /// <param name="ca">The Algorithm.</param>
+        /// <param name="cbf">The CNG Key Blob Format.</param>
+        /// <returns>The key.</returns>
         public string GenerateCngKeyAsString(CngAlgorithm ca, CngKeyBlobFormat cbf)
         {
             CngKey ck = GenerateCngKey(ca);
@@ -55,6 +64,11 @@ namespace ACLibrary.Crypto.HashingAndSignture.Providers
             return strb.ToString();
         }
 
+        /// <summary>
+        /// Create a CNG Key and form as string, then export as a file.
+        /// </summary>
+        /// <param name="ca">The Algorithm.</param>
+        /// <param name="cbf">The CNG Key Blob Format.</param>
         public void GenerateAndExportAsFile(string path, CngAlgorithm ca, CngKeyBlobFormat cbf)
         {
             StreamWriter sw = new StreamWriter(path);
@@ -64,6 +78,40 @@ namespace ACLibrary.Crypto.HashingAndSignture.Providers
             sw.Close();
         }
 
+        /// <summary>
+        /// Imports a key from file.
+        /// </summary>
+        /// <param name="keyPath">Path to key.</param>
+        /// <param name="kbF">The CNG Key Blob Format.</param>
+        /// <returns>The key.</returns>
+        public CngKey ImportKeyFromFile(string keyPath, CngKeyBlobFormat kbF)
+        {
+            StreamReader sr = new StreamReader(keyPath);
+
+            string keyBlockStr = sr.ReadToEnd();
+            sr.Close();
+
+            string[] keyBlockStrArray = keyBlockStr.Split(',');
+
+            byte[] keyBlock = new byte[keyBlockStrArray.Length];
+
+            int i = 0;
+
+            foreach (string item in keyBlockStrArray)
+            {
+                keyBlock[i] = byte.Parse(item);
+                i++;
+            }
+
+            CngKey ck = CngKey.Import(keyBlock, kbF);
+            return ck;
+        }
+
+        /// <summary>
+        /// Imports a key from file.
+        /// </summary>
+        /// <param name="keyPath">Path to key.</param>
+        /// <returns>The key.</returns>
         public byte[] ImportKeyFromFile(string keyPath)
         {
             StreamReader sr = new StreamReader(keyPath);
