@@ -36,8 +36,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ACCollectionLib">
-      <HintPath>..\ACCollectionLib\bin\Debug\ACCollectionLib.dll</HintPath>
+    <Reference Include="ACLibrary.Collection">
+      <HintPath>..\ACCollectionLib\bin\Release\ACLibrary.Collection.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>

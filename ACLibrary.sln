@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACCollectionLib", "ACCollectionLib\ACCollectionLib.csproj", "{8DEF7A32-C87C-45E3-A5A0-E9B0433276FA}"
 EndProject
@@ -14,29 +14,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACGUILibrary", "ACGUILibrar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACCryptoAPI", "ACCryptoAPI\ACCryptoAPI.csproj", "{4DC6064C-1623-4C6E-AD7D-D948770F2235}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeConvertLib", "TypeConvertLib\TypeConvertLib.csproj", "{EA0316CD-6AD0-4B90-A0DD-568686604AA6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTypeConvertLib", "TestTypeConvertLib\TestTypeConvertLib.csproj", "{0A930A04-DA67-47C8-9C2D-23E52F306EA2}"
-	ProjectSection(ProjectDependencies) = postProject
-		{EA0316CD-6AD0-4B90-A0DD-568686604AA6} = {EA0316CD-6AD0-4B90-A0DD-568686604AA6}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRandomKeyMixCrypt", "TestRandomKeyMixCrypt\TestRandomKeyMixCrypt.csproj", "{6E7B93D8-D083-4FE8-B808-8B2CB2D875CE}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4DC6064C-1623-4C6E-AD7D-D948770F2235} = {4DC6064C-1623-4C6E-AD7D-D948770F2235}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkLib", "NetworkLib\NetworkLib.csproj", "{FB647FD7-F895-4A44-A32A-F4CFFB23D311}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNetworkLib", "TestNetworkLib\TestNetworkLib.csproj", "{A54B48B7-0AC0-412B-A622-E4338F1CACFF}"
-	ProjectSection(ProjectDependencies) = postProject
-		{FB647FD7-F895-4A44-A32A-F4CFFB23D311} = {FB647FD7-F895-4A44-A32A-F4CFFB23D311}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSignApp", "TestSignApp\TestSignApp.csproj", "{94D07598-B2B7-4DF9-A01F-FAD236F2E04C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4DC6064C-1623-4C6E-AD7D-D948770F2235} = {4DC6064C-1623-4C6E-AD7D-D948770F2235}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACCryptoAPI_R", "ACCryptoAPI_R\ACCryptoAPI_R.csproj", "{A071B7F5-3129-4385-9CCF-EE08A894AE97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,32 +48,23 @@ Global
 		{4DC6064C-1623-4C6E-AD7D-D948770F2235}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DC6064C-1623-4C6E-AD7D-D948770F2235}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DC6064C-1623-4C6E-AD7D-D948770F2235}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA0316CD-6AD0-4B90-A0DD-568686604AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA0316CD-6AD0-4B90-A0DD-568686604AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA0316CD-6AD0-4B90-A0DD-568686604AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA0316CD-6AD0-4B90-A0DD-568686604AA6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A930A04-DA67-47C8-9C2D-23E52F306EA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A930A04-DA67-47C8-9C2D-23E52F306EA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A930A04-DA67-47C8-9C2D-23E52F306EA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A930A04-DA67-47C8-9C2D-23E52F306EA2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6E7B93D8-D083-4FE8-B808-8B2CB2D875CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6E7B93D8-D083-4FE8-B808-8B2CB2D875CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E7B93D8-D083-4FE8-B808-8B2CB2D875CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E7B93D8-D083-4FE8-B808-8B2CB2D875CE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FB647FD7-F895-4A44-A32A-F4CFFB23D311}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB647FD7-F895-4A44-A32A-F4CFFB23D311}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB647FD7-F895-4A44-A32A-F4CFFB23D311}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB647FD7-F895-4A44-A32A-F4CFFB23D311}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A54B48B7-0AC0-412B-A622-E4338F1CACFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A54B48B7-0AC0-412B-A622-E4338F1CACFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A54B48B7-0AC0-412B-A622-E4338F1CACFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A54B48B7-0AC0-412B-A622-E4338F1CACFF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{94D07598-B2B7-4DF9-A01F-FAD236F2E04C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{94D07598-B2B7-4DF9-A01F-FAD236F2E04C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94D07598-B2B7-4DF9-A01F-FAD236F2E04C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94D07598-B2B7-4DF9-A01F-FAD236F2E04C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A071B7F5-3129-4385-9CCF-EE08A894AE97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A071B7F5-3129-4385-9CCF-EE08A894AE97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A071B7F5-3129-4385-9CCF-EE08A894AE97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A071B7F5-3129-4385-9CCF-EE08A894AE97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63F4D6F6-CF42-41C3-9FD8-033C03E8BFA6}
 	EndGlobalSection
 EndGlobal

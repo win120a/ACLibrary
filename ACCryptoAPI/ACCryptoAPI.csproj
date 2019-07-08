@@ -32,9 +32,6 @@
     <DocumentationFile>bin\Release\AC_CryptoAPI_docs.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ACLibrary.TypeConvertLib">
-      <HintPath>..\TypeConvertLib\bin\Debug\ACLibrary.TypeConvertLib.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Security" />
@@ -57,6 +54,7 @@
     <Compile Include="MixCrypt\Weaker.cs" />
     <Compile Include="MixCrypt\Mid.cs" />
     <Compile Include="MixCrypt\MixCryptBase.cs" />
+    <Compile Include="Utils\NumberConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CryptoProviders\RC2Provider.cs" />
     <Compile Include="CryptoProviders\RijndaelProvider.cs" />
