@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright (C) 2011-2015 AC Inc. (Andy Cheung)
+   Copyright (C) 2011-2019 Andy Cheung
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 using System.IO;
 using System.Security.Cryptography;
 
-namespace ACLibrary.Crypto.HashingAndSignture.Providers
+namespace ACLibrary.Crypto.HashingAndSigning.Providers
 {
     /// <summary>
     /// Provides SHA256 hashing functions.

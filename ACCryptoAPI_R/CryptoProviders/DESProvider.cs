@@ -14,11 +14,6 @@
    limitations under the License.
 */
 
-/*
- * Based on MVA's 20 C# Question Explained.
- * Copyright (C) Microsoft Corporation
- */
-
 using System.Security.Cryptography;
 
 namespace ACLibrary.Crypto.CryptoProviders
@@ -37,7 +32,7 @@ namespace ACLibrary.Crypto.CryptoProviders
             {
                 if(instance == null)
                 {
-                    instance = DESProvider.Instance;
+                    instance = new DESProvider();
                 }
                 return instance;
             }

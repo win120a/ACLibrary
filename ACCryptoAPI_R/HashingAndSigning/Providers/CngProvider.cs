@@ -18,7 +18,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace ACLibrary.Crypto.HashingAndSignture.Providers
+namespace ACLibrary.Crypto.HashingAndSigning.Providers
 {
     /// <summary>
     /// Repersents a CNG crypto provider.

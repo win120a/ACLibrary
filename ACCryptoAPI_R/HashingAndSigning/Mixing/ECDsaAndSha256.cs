@@ -14,13 +14,13 @@
    limitations under the License.
 */
 
-using ACLibrary.Crypto.HashingAndSignture.Providers;
+using ACLibrary.Crypto.HashingAndSigning.Providers;
 using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace ACLibrary.Crypto.HashingAndSignture.Mixing
+namespace ACLibrary.Crypto.HashingAndSigning.Mixing
 {
     /// <summary>
     /// A mixed H & S Method uses ECDsa and SHA256.
@@ -58,7 +58,7 @@ namespace ACLibrary.Crypto.HashingAndSignture.Mixing
             string[] diffSign = APResult.Split('\\');
 
             StreamReader ecdKSR = new StreamReader(ecdSaKeyFile);
-            String s = ecdKSR.ReadToEnd();
+            string s = ecdKSR.ReadToEnd();
             ecdKSR.Close();
 
             ECDsaProvider esa = ECDsaProvider.CreateUseAXMLKeyFile(s);

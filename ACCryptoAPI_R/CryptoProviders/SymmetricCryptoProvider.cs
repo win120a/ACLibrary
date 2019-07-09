@@ -14,6 +14,11 @@
    limitations under the License.
 */
 
+/*
+ * Based on MVA's 20 C# Question Explained.
+ * Copyright (C) Microsoft Corporation
+ */
+
 using System;
 using System.IO;
 using System.Security.Cryptography;

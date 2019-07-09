@@ -34,7 +34,7 @@ namespace ACLibrary.Crypto.RandomKeyMixCrypt
         /// <param name="plainText">The string to encrypt.</param>
         /// <param name="password">The password.</param>
         /// <returns>The encrypted string.</returns>
-        public ReturnStruct EncryptString(String plainText, String partPassword)
+        public ReturnStruct EncryptString(string plainText, string partPassword)
         {
             List<int> ril = new List<int>();
             Random r = new Random();
@@ -74,7 +74,7 @@ namespace ACLibrary.Crypto.RandomKeyMixCrypt
         /// <param name="Source">The string to decrypt.</param>
         /// <param name="password">The password.</param>
         /// <returns>The decrypted string.</returns>
-        public String DecryptString(String Source, String password, int[] rKeys)
+        public string DecryptString(string Source, string password, int[] rKeys)
         {
             // string plain = testEncrypt.DecryptString(encText, password);
 

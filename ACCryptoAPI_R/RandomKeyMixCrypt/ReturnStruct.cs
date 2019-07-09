@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright (C) 2011-2015 AC Inc. (Andy Cheung)
+   Copyright (C) 2011-2019 Andy Cheung
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -14,41 +14,12 @@
    limitations under the License.
 */
 
-/*
- * Based on MVA's 20 C# Question Explained.
- * Copyright (C) Microsoft Corporation
- */
-
-
 namespace ACLibrary.Crypto.RandomKeyMixCrypt
 {
     public struct ReturnStruct
     {
-        private string result;
-        private int[] randomKeys;
+        public string Result { get; set; }
 
-        public string Result
-        {
-            get
-            {
-                return result;
-            }
-            set
-            {
-                result = value;
-            }
-        }
-
-        public int[] RandomKeys
-        {
-            get
-            {
-                return randomKeys;
-            }
-            set
-            {
-                randomKeys = value;
-            }
-        }
+        public int[] RandomKeys { get; set; }
     }
 }

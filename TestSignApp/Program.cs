@@ -14,8 +14,9 @@
    limitations under the License.
 */
 
-using ACLibrary.Crypto.HashingAndSignture.Mixing;
+using ACLibrary.Crypto.HashingAndSigning.Mixing;
 using System;
+using System.IO;
 
 namespace TestSignApp
 {
@@ -26,12 +27,12 @@ namespace TestSignApp
             //// Init Code ////
             ECDsaAndSha256 p = new ECDsaAndSha256();
 
-            //StreamWriter sw = new StreamWriter("F:\\xmlpubkey.xml");
-            //sw.Write(p.SignAsNewKeyAndExportPublicKeyAsXml("F:\\ecdsatest.sig", "F:\\gpg4win-2.2.1.exe", "TestKey"));
-            //sw.Close();
+            StreamWriter sw = new StreamWriter(@"D:\Workspace\VS\ACLibrary\stest\key.xml");
+            sw.Write(p.SignAsNewKeyAndExportPublicKeyAsXml(@"D:\Workspace\VS\ACLibrary\stest\sig.sig", @"D:\Workspace\VS\ACLibrary\stest\n2sf.txt", "TestKey"));
+            sw.Close();
 
             //// Test Code ////
-            Console.WriteLine(p.Check("F:\\ecdsatest.sig", "F:\\gpg4win-2.2.1.exe", "F:\\xmlpubkey.xml"));
+            Console.WriteLine(p.Check(@"D:\Workspace\VS\ACLibrary\stest\sig.sig", @"D:\Workspace\VS\ACLibrary\stest\n2sf.txt", @"D:\Workspace\VS\ACLibrary\stest\key.xml"));
 
             Console.ReadKey();
         }

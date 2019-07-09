@@ -37,7 +37,7 @@ namespace ACLibrary.Crypto
             /// <param name="plainText">The string to encrypt.</param>
             /// <param name="password">The password.</param>
             /// <returns>The encrypted string.</returns>
-            public String EncryptString(String plainText, String password)
+            public string EncryptString(string plainText, string password)
             {
                 // 3AES
                 AESProvider aes = AESProvider.Instance;
@@ -55,7 +55,7 @@ namespace ACLibrary.Crypto
             /// <param name="Source">The string to decrypt.</param>
             /// <param name="password">The password.</param>
             /// <returns>The decrypted string.</returns>
-            public String DecryptString(String Source, String password)
+            public string DecryptString(string Source, string password)
             {
                 // string plain = testEncrypt.DecryptString(encText, password);
 

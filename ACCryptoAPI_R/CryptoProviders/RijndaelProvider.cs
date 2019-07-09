@@ -14,15 +14,7 @@
    limitations under the License.
 */
 
-/*
- * Based on MVA's 20 C# Question Explained.
- * Copyright (C) Microsoft Corporation
- */
-
-using System;
-using System.IO;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace ACLibrary.Crypto.CryptoProviders
 {
@@ -40,7 +32,7 @@ namespace ACLibrary.Crypto.CryptoProviders
             {
                 if (instance == null)
                 {
-                    instance = RijndaelProvider.Instance;
+                    instance = new RijndaelProvider();
                 }
                 return instance;
             }

@@ -40,7 +40,7 @@ namespace ACLibrary.Crypto.CryptoProviders
             {
                 if (instance == null)
                 {
-                    instance = RC2Provider.Instance;
+                    instance = new RC2Provider();
                 }
                 return instance;
             }

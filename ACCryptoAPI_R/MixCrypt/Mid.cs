@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright (C) 2011-2015 AC Inc. (Andy Cheung)
+   Copyright (C) 2011-2019 Andy Cheung
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ namespace ACLibrary.Crypto
             /// <param name="plainText">The string to encrypt.</param>
             /// <param name="password">The password.</param>
             /// <returns>The encrypted string.</returns>
-            public String EncryptString(String plainText, String password)
+            public string EncryptString(string plainText, string password)
             {
                 // 3DES
                 DESProvider des = DESProvider.Instance;
@@ -62,7 +62,7 @@ namespace ACLibrary.Crypto
             /// <param name="Source">The string to decrypt.</param>
             /// <param name="password">The password.</param>
             /// <returns>The decrypted string.</returns>
-            public String DecryptString(String Source, String password)
+            public string DecryptString(string Source, string password)
             {
                 // string plain = testEncrypt.DecryptString(encText, password);
 
