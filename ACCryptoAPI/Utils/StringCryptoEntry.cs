@@ -35,7 +35,7 @@ namespace ACLibrary.Crypto.Utils
         /// <param name="otext">The original text.</param>
         /// <param name="psw">The password.</param>
         /// <returns>The encrypted text.</returns>
-        public static string Encrypt(ICryptoProvider icp, string otext, string psw)
+        public static string Encrypt(IStringCryptoProvider icp, string otext, string psw)
         {
             return icp.EncryptString(otext, psw);
         }
@@ -47,7 +47,7 @@ namespace ACLibrary.Crypto.Utils
         /// <param name="otext">The original text.</param>
         /// <param name="psw">The password.</param>
         /// <returns>The decrypted text.</returns>
-        public static string Decrypt(ICryptoProvider icp, string otext, string psw)
+        public static string Decrypt(IStringCryptoProvider icp, string otext, string psw)
         {
             return icp.DecryptString(otext, psw);
         }

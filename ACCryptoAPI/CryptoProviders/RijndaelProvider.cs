@@ -21,7 +21,7 @@ namespace ACLibrary.Crypto.CryptoProviders
     /// <summary>
     /// The Rijndael encryption provider.
     /// </summary>
-    public class RijndaelProvider : SymmetricCryptoProvider, ICryptoProvider
+    public class RijndaelProvider : SymmetricCryptoProvider, IStringCryptoProvider
     {
         private RijndaelProvider() { }
         private static RijndaelProvider instance;

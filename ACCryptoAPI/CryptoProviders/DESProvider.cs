@@ -21,7 +21,7 @@ namespace ACLibrary.Crypto.CryptoProviders
     /// <summary>
     /// The DES encryption provider.
     /// </summary>
-    public sealed class DESProvider : SymmetricCryptoProvider, ICryptoProvider
+    public sealed class DESProvider : SymmetricCryptoProvider, IStringCryptoProvider
     {
         private DESProvider() { }
         private static DESProvider instance;

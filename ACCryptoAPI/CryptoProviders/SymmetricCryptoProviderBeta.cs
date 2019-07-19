@@ -27,9 +27,9 @@ using System.Text;
 namespace ACLibrary.Crypto.CryptoProviders
 {
     /*
-     * A thought that try to remove the dependence of CipherInitiator.
+     * A thought that tries to remove the dependence of CipherInitiator, and implements the ICryptoProvider.
      */
-    public abstract class SymmetricCryptoProviderBeta
+    public abstract class SymmetricCryptoProviderBeta : IStringCryptoProvider
     {
         protected void InitCipherObject(SymmetricAlgorithm alg, string key)
         {
@@ -40,7 +40,7 @@ namespace ACLibrary.Crypto.CryptoProviders
 
         protected abstract SymmetricAlgorithm InitCipher();
 
-        internal string Encrypt(string plainText, string password)
+        public string EncryptString(string plainText, string password)
         {
             // first we convert the plain text into a byte array
             byte[] plainTextBytes = Encoding.Unicode.GetBytes(plainText);
@@ -63,7 +63,7 @@ namespace ACLibrary.Crypto.CryptoProviders
             return Convert.ToBase64String(myStream.ToArray());
         }
 
-        internal string Decrypt(string encryptedText, string password)
+        public string DecryptString(string encryptedText, string password)
         {
             // convert our encrypted string to a byte array
             byte[] encryptedTextBytes = Convert.FromBase64String(encryptedText);
@@ -90,5 +90,20 @@ namespace ACLibrary.Crypto.CryptoProviders
     public class AESTest : SymmetricCryptoProviderBeta
     {
         protected override SymmetricAlgorithm InitCipher() => new AesCryptoServiceProvider();
+
+        private AESTest() { }
+        private static AESTest instance;
+
+        public static AESTest Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new AESTest();
+                }
+                return instance;
+            }
+        }
     }
 }

@@ -18,7 +18,7 @@ using System.Security.Cryptography;
 
 namespace ACLibrary.Crypto.CryptoProviders
 {
-    public class AESProvider : SymmetricCryptoProvider, ICryptoProvider
+    public class AESProvider : SymmetricCryptoProvider, IStringCryptoProvider
     {
         private readonly CipherInitiator ci = () => new AesCryptoServiceProvider();
 

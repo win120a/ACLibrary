@@ -29,7 +29,7 @@ namespace ACLibrary.Crypto.CryptoProviders
     /// <summary>
     /// The RC2 encryption provider.
     /// </summary>
-    public class RC2Provider : SymmetricCryptoProvider, ICryptoProvider
+    public class RC2Provider : SymmetricCryptoProvider, IStringCryptoProvider
     {
         private RC2Provider() { }
         private static RC2Provider instance;
