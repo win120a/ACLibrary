@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright (C) 2011-2015 AC Inc. (Andy Cheung)
+   Copyright (C) 2011-2019 Andy Cheung
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -29,21 +29,24 @@ namespace ACLibrary.Crypto.CryptoProviders
     /// <summary>
     /// The RC2 encryption provider.
     /// </summary>
-    public class RC2Provider : ICryptoProvider
+    public class RC2Provider : SymmetricCryptoProvider, ICryptoProvider
     {
-        /// <summary>
-        /// Create cipher object.
-        /// </summary>
-        /// <param name="key">The password.</param>
-        /// <returns>The cipher object.</returns>
-        static RC2 CreateRC2(string key)
+        private RC2Provider() { }
+        private static RC2Provider instance;
+
+        public static RC2Provider Instance
         {
-            MD5 md5 = new MD5CryptoServiceProvider();
-            RC2 rc2 = new RC2CryptoServiceProvider();
-            rc2.Key = md5.ComputeHash(Encoding.Unicode.GetBytes(key));
-            rc2.IV = new byte[rc2.BlockSize / 8];
-            return rc2;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RC2Provider();
+                }
+                return instance;
+            }
         }
+
+        private CipherInitiator ci = () => new RC2CryptoServiceProvider();
 
         /// <summary>
         /// The Encryption method.
@@ -53,24 +56,7 @@ namespace ACLibrary.Crypto.CryptoProviders
         /// <returns>The encrypted string.</returns>
         public string EncryptString(string plainText, string password)
         {
-            // first we convert the plain text into a byte array
-            byte[] plainTextBytes = Encoding.Unicode.GetBytes(plainText);
-
-            // use a memory stream to hold the bytes
-            MemoryStream myStream = new MemoryStream();
-
-            // create the key and initialization vector using the password
-            RC2 rc2 = CreateRC2(password);
-
-            // create the encoder that will write to the memory stream
-            CryptoStream cryptStream = new CryptoStream(myStream, rc2.CreateEncryptor(), CryptoStreamMode.Write);
-
-            // we now use the crypto stream to write our byte array to the memory stream
-            cryptStream.Write(plainTextBytes, 0, plainTextBytes.Length);
-            cryptStream.FlushFinalBlock();
-
-            // change the encrypted stream to a printable version of our encrypted string
-            return Convert.ToBase64String(myStream.ToArray());
+            return Encrypt(plainText, password, ci);
         }
 
         /// <summary>
@@ -81,24 +67,7 @@ namespace ACLibrary.Crypto.CryptoProviders
         /// <returns>The decrypted string.</returns>
         public string DecryptString(string encryptedText, string password)
         {
-            // convert our encrypted string to a byte array
-            byte[] encryptedTextBytes = Convert.FromBase64String(encryptedText);
-
-            // create a memory stream to hold the bytes
-            MemoryStream myStream = new MemoryStream();
-
-            // create the key and initialization vector using the password
-            RC2 rc2 = CreateRC2(password);
-
-            // create our decoder to write to the stream
-            CryptoStream decryptStream = new CryptoStream(myStream, rc2.CreateDecryptor(), CryptoStreamMode.Write);
-
-            // we now use the crypto stream to the byte array
-            decryptStream.Write(encryptedTextBytes, 0, encryptedTextBytes.Length);
-            decryptStream.FlushFinalBlock();
-
-            // convert our stream to a string value
-            return Encoding.Unicode.GetString(myStream.ToArray());
+            return Decrypt(encryptedText, password, ci);
         }
     }
 }

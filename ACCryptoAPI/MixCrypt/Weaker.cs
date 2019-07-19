@@ -31,16 +31,33 @@ namespace ACLibrary.Crypto
         /// </summary>
         public class Weaker : MixCryptBase
         {
+            private Weaker() { }
+
+            private static Weaker instance;
+
+            public static Weaker Instance
+            {
+                get
+                {
+                    if (instance == null)
+                    {
+                        instance = new Weaker();
+                    }
+                    return instance;
+                }
+            }
+
+
             /// <summary>
             /// The Encryption method.
             /// </summary>
             /// <param name="plainText">The string to encrypt.</param>
             /// <param name="password">The password.</param>
             /// <returns>The encrypted string.</returns>
-            public String EncryptString(String plainText, String password)
+            public string EncryptString(string plainText, string password)
             {
                 // 3AES
-                AESProvider aes = new AESProvider();
+                AESProvider aes = AESProvider.Instance;
                 string aes1 = aes.EncryptString(plainText, password);
                 string aes2 = aes.EncryptString(aes1, password);
                 string aes3 = aes.EncryptString(aes2, password);
@@ -55,12 +72,12 @@ namespace ACLibrary.Crypto
             /// <param name="Source">The string to decrypt.</param>
             /// <param name="password">The password.</param>
             /// <returns>The decrypted string.</returns>
-            public String DecryptString(String Source, String password)
+            public string DecryptString(string Source, string password)
             {
                 // string plain = testEncrypt.DecryptString(encText, password);
 
                 // 3AES
-                AESProvider aes = new AESProvider();
+                AESProvider aes = AESProvider.Instance;
                 string aes1 = aes.DecryptString(Source, password);
                 string aes2 = aes.DecryptString(aes1, password);
                 string aes3 = aes.DecryptString(aes2, password);

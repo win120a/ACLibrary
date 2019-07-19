@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright (C) 2011-2015 AC Inc. (Andy Cheung)
+   Copyright (C) 2011-2019 Andy Cheung
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -14,91 +14,38 @@
    limitations under the License.
 */
 
-/*
- * Based on MVA's 20 C# Question Explained.
- * Copyright (C) Microsoft Corporation
- */
-
-using System;
-using System.IO;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace ACLibrary.Crypto.CryptoProviders
 {
-    /// <summary>
-    /// The AES encryption provider.
-    /// </summary>
-    public class AESProvider : ICryptoProvider
+    public class AESProvider : SymmetricCryptoProvider, ICryptoProvider
     {
-        /// <summary>
-        /// Create cipher object.
-        /// </summary>
-        /// <param name="key">The password.</param>
-        /// <returns>The cipher object.</returns>
-        static Aes CreateAES(string key)
+        private readonly CipherInitiator ci = () => new AesCryptoServiceProvider();
+
+        private AESProvider() { }
+
+        private static AESProvider instance;
+
+        public static AESProvider Instance
         {
-            MD5 md5 = new MD5CryptoServiceProvider();
-            Aes aes = new AesCryptoServiceProvider();
-            aes.Key = md5.ComputeHash(Encoding.Unicode.GetBytes(key));
-            aes.IV = new byte[aes.BlockSize / 8];
-            return aes;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new AESProvider();
+                }
+                return instance;
+            }
         }
 
-        /// <summary>
-        /// The Encryption method.
-        /// </summary>
-        /// <param name="plainText">The string to encrypt.</param>
-        /// <param name="password">The password.</param>
-        /// <returns>The encrypted string.</returns>
-        public string EncryptString(string plainText, string password)
-        {
-            // first we convert the plain text into a byte array
-            byte[] plainTextBytes = Encoding.Unicode.GetBytes(plainText);
-
-            // use a memory stream to hold the bytes
-            MemoryStream myStream = new MemoryStream();
-
-            // create the key and initialization vector using the password
-            Aes aes = CreateAES(password);
-
-            // create the encoder that will write to the memory stream
-            CryptoStream cryptStream = new CryptoStream(myStream, aes.CreateEncryptor(), CryptoStreamMode.Write);
-
-            // we now use the crypto stream to write our byte array to the memory stream
-            cryptStream.Write(plainTextBytes, 0, plainTextBytes.Length);
-            cryptStream.FlushFinalBlock();
-
-            // change the encrypted stream to a printable version of our encrypted string
-            return Convert.ToBase64String(myStream.ToArray());
-        }
-
-        /// <summary>
-        /// The Decryption method.
-        /// </summary>
-        /// <param name="encryptedText">The string to decrypt.</param>
-        /// <param name="password">The password.</param>
-        /// <returns>The decrypted string.</returns>
         public string DecryptString(string encryptedText, string password)
         {
-            // convert our encrypted string to a byte array
-            byte[] encryptedTextBytes = Convert.FromBase64String(encryptedText);
+            return Decrypt(encryptedText, password, ci);
+        }
 
-            // create a memory stream to hold the bytes
-            MemoryStream myStream = new MemoryStream();
-
-            // create the key and initialization vector using the password
-            Aes aes = CreateAES(password);
-
-            // create our decoder to write to the stream
-            CryptoStream decryptStream = new CryptoStream(myStream, aes.CreateDecryptor(), CryptoStreamMode.Write);
-
-            // we now use the crypto stream to the byte array
-            decryptStream.Write(encryptedTextBytes, 0, encryptedTextBytes.Length);
-            decryptStream.FlushFinalBlock();
-
-            // convert our stream to a string value
-            return Encoding.Unicode.GetString(myStream.ToArray());
+        public string EncryptString(string plainText, string password)
+        {
+            return Encrypt(plainText, password, ci);
         }
     }
 }

@@ -31,28 +31,44 @@ namespace ACLibrary.Crypto
         /// </summary>
         public class Stronger : MixCryptBase
         {
+            private Stronger() { }
+
+            private static Stronger instance;
+
+            public static Stronger Instance
+            {
+                get
+                {
+                    if (instance == null)
+                    {
+                        instance = new Stronger();
+                    }
+                    return instance;
+                }
+            }
+
             /// <summary>
             /// The Encryption method.
             /// </summary>
             /// <param name="plainText">The string to encrypt.</param>
             /// <param name="password">The password.</param>
             /// <returns>The encrypted string.</returns>
-            public String EncryptString(String plainText, String password)
+            public string EncryptString(string plainText, string password)
             {
                 // 3RC2
-                RC2Provider rc2 = new RC2Provider();
+                RC2Provider rc2 = RC2Provider.Instance;
                 string rc2_1 = rc2.EncryptString(plainText, password);
                 string rc2_2 = rc2.EncryptString(rc2_1, password);
                 string rc2_3 = rc2.EncryptString(rc2_2, password);
 
                 // 3DES
-                DESProvider des = new DESProvider();
+                DESProvider des = DESProvider.Instance;
                 string des1 = des.EncryptString(rc2_3, password);
                 string des2 = des.EncryptString(des1, password);
                 string des3 = des.EncryptString(des2, password);
 
                 // 3AES
-                AESProvider aes = new AESProvider();
+                AESProvider aes = AESProvider.Instance;
                 string aes1 = aes.EncryptString(des3, password);
                 string aes2 = aes.EncryptString(aes1, password);
                 string aes3 = aes.EncryptString(aes2, password);
@@ -68,24 +84,24 @@ namespace ACLibrary.Crypto
             /// <param name="Source">The string to decrypt.</param>
             /// <param name="password">The password.</param>
             /// <returns>The decrypted string.</returns>
-            public String DecryptString(String Source, String password)
+            public string DecryptString(string Source, string password)
             {
                 // string plain = testEncrypt.DecryptString(encText, password);
 
                 // 3AES
-                AESProvider aes = new AESProvider();
+                AESProvider aes = AESProvider.Instance;
                 string aes1 = aes.DecryptString(Source, password);
                 string aes2 = aes.DecryptString(aes1, password);
                 string aes3 = aes.DecryptString(aes2, password);
 
                 // 3DES
-                DESProvider des = new DESProvider();
+                DESProvider des = DESProvider.Instance;
                 string des1 = des.DecryptString(aes3, password);
                 string des2 = des.DecryptString(des1, password);
                 string des3 = des.DecryptString(des2, password);
 
                 // 3RC2
-                RC2Provider rc2 = new RC2Provider();
+                RC2Provider rc2 = RC2Provider.Instance;
                 string rc2_1 = rc2.DecryptString(des3, password);
                 string rc2_2 = rc2.DecryptString(rc2_1, password);
                 string rc2_3 = rc2.DecryptString(rc2_2, password);

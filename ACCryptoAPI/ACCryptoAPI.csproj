@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4DC6064C-1623-4C6E-AD7D-D948770F2235}</ProjectGuid>
+    <ProjectGuid>{A071B7F5-3129-4385-9CCF-EE08A894AE97}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ACLibrary.Crypto</RootNamespace>
@@ -29,26 +29,28 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\AC_CryptoAPI_docs.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Security" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CryptoProviders\AESProvider.cs" />
+    <Compile Include="CryptoProviders\SymmetricCryptoProviderBeta.cs" />
+    <Compile Include="CryptoProviders\SymmetricCryptoProvider.cs" />
     <Compile Include="CryptoProviders\DESProvider.cs" />
     <Compile Include="CryptoProviders\ICryptoProvider.cs" />
-    <Compile Include="HashingAndSignture\Mixing\ECDsaAndSha256.cs" />
-    <Compile Include="HashingAndSignture\Providers\CngProvider.cs" />
-    <Compile Include="HashingAndSignture\Providers\ECDsaProvider.cs" />
-    <Compile Include="HashingAndSignture\Providers\SHA256Provider.cs" />
+    <Compile Include="HashingAndSigning\Mixing\ECDsaAndSha256.cs" />
+    <Compile Include="HashingAndSigning\Providers\CngProvider.cs" />
+    <Compile Include="HashingAndSigning\Providers\ECDsaProvider.cs" />
+    <Compile Include="HashingAndSigning\Providers\SHA256Provider.cs" />
     <Compile Include="MixCrypt\Stronger.cs" />
     <Compile Include="MixCrypt\Strongest.cs" />
     <Compile Include="MixCrypt\Weaker.cs" />
@@ -63,7 +65,6 @@
     <Compile Include="RandomKeyMixCrypt\ReturnStruct.cs" />
     <Compile Include="Utils\StringCryptoEntry.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

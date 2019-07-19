@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright (C) 2011-2015 AC Inc. (Andy Cheung)
+   Copyright (C) 2011-2019 Andy Cheung
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -31,22 +31,38 @@ namespace ACLibrary.Crypto
         /// </summary>
         public class Mid : MixCryptBase
         {
+            private Mid() { }
+
+            private static Mid instance;
+
+            public static Mid Instance
+            {
+                get
+                {
+                    if(instance == null)
+                    {
+                        instance = new Mid();
+                    }
+                    return instance;
+                }
+            }
+
             /// <summary>
             /// The Encryption method.
             /// </summary>
             /// <param name="plainText">The string to encrypt.</param>
             /// <param name="password">The password.</param>
             /// <returns>The encrypted string.</returns>
-            public String EncryptString(String plainText, String password)
+            public string EncryptString(string plainText, string password)
             {
                 // 3DES
-                DESProvider des = new DESProvider();
+                DESProvider des = DESProvider.Instance;
                 string des1 = des.EncryptString(plainText, password);
                 string des2 = des.EncryptString(des1, password);
                 string des3 = des.EncryptString(des2, password);
 
                 // 3AES
-                AESProvider aes = new AESProvider();
+                AESProvider aes = AESProvider.Instance;
                 string aes1 = aes.EncryptString(des3, password);
                 string aes2 = aes.EncryptString(aes1, password);
                 string aes3 = aes.EncryptString(aes2, password);
@@ -62,18 +78,18 @@ namespace ACLibrary.Crypto
             /// <param name="Source">The string to decrypt.</param>
             /// <param name="password">The password.</param>
             /// <returns>The decrypted string.</returns>
-            public String DecryptString(String Source, String password)
+            public string DecryptString(string Source, string password)
             {
                 // string plain = testEncrypt.DecryptString(encText, password);
 
                 // 3AES
-                AESProvider aes = new AESProvider();
+                AESProvider aes = AESProvider.Instance;
                 string aes1 = aes.DecryptString(Source, password);
                 string aes2 = aes.DecryptString(aes1, password);
                 string aes3 = aes.DecryptString(aes2, password);
 
                 // 3DES
-                DESProvider des = new DESProvider();
+                DESProvider des = DESProvider.Instance;
                 string des1 = des.DecryptString(aes3, password);
                 string des2 = des.DecryptString(des1, password);
                 string des3 = des.DecryptString(des2, password);

@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSignApp", "TestSignApp\
 		{4DC6064C-1623-4C6E-AD7D-D948770F2235} = {4DC6064C-1623-4C6E-AD7D-D948770F2235}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACCryptoAPI_R", "ACCryptoAPI_R\ACCryptoAPI_R.csproj", "{A071B7F5-3129-4385-9CCF-EE08A894AE97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestREncryptLibs", "TestREncryptLibs\TestREncryptLibs.csproj", "{4EDCE887-4FAA-47F7-82EE-C756E9F9B589}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +60,10 @@ Global
 		{A071B7F5-3129-4385-9CCF-EE08A894AE97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A071B7F5-3129-4385-9CCF-EE08A894AE97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A071B7F5-3129-4385-9CCF-EE08A894AE97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EDCE887-4FAA-47F7-82EE-C756E9F9B589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EDCE887-4FAA-47F7-82EE-C756E9F9B589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EDCE887-4FAA-47F7-82EE-C756E9F9B589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EDCE887-4FAA-47F7-82EE-C756E9F9B589}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
