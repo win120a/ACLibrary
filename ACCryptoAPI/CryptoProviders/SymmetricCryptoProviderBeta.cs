@@ -27,7 +27,7 @@ using System.Text;
 namespace ACLibrary.Crypto.CryptoProviders
 {
     /*
-     * A thought that tries to remove the dependence of CipherInitiator, and implements the ICryptoProvider.
+     * A thought that tries to remove the dependence of CipherInitiator, and implement the IStringCryptoProvider.
      */
     public abstract class SymmetricCryptoProviderBeta : IStringCryptoProvider
     {
