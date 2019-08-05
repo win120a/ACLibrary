@@ -18,9 +18,9 @@ using System.Security.Cryptography;
 
 namespace ACLibrary.Crypto.CryptoProviders
 {
-    public class AESProvider : SymmetricCryptoProvider, IStringCryptoProvider
+    public class AESProvider : SymmetricCryptoProvider
     {
-        private readonly CipherInitiator ci = () => new AesCryptoServiceProvider();
+        protected override SymmetricAlgorithm InitCipher() => new AesCryptoServiceProvider();
 
         private AESProvider() { }
 
@@ -36,16 +36,6 @@ namespace ACLibrary.Crypto.CryptoProviders
                 }
                 return instance;
             }
-        }
-
-        public string DecryptString(string encryptedText, string password)
-        {
-            return Decrypt(encryptedText, password, ci);
-        }
-
-        public string EncryptString(string plainText, string password)
-        {
-            return Encrypt(plainText, password, ci);
         }
     }
 }

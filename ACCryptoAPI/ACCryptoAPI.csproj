@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CryptoProviders\AESProvider.cs" />
-    <Compile Include="CryptoProviders\SymmetricCryptoProviderBeta.cs" />
     <Compile Include="CryptoProviders\SymmetricCryptoProvider.cs" />
     <Compile Include="CryptoProviders\DESProvider.cs" />
     <Compile Include="CryptoProviders\IStringCryptoProvider.cs" />
@@ -63,7 +62,6 @@
     <Compile Include="RandomKeyMixCrypt\IRandomKeyMixCryptBase.cs" />
     <Compile Include="RandomKeyMixCrypt\Mid.cs" />
     <Compile Include="RandomKeyMixCrypt\ReturnStruct.cs" />
-    <Compile Include="Utils\StringCryptoEntry.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

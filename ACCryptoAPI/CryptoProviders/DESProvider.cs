@@ -21,7 +21,7 @@ namespace ACLibrary.Crypto.CryptoProviders
     /// <summary>
     /// The DES encryption provider.
     /// </summary>
-    public sealed class DESProvider : SymmetricCryptoProvider, IStringCryptoProvider
+    public sealed class DESProvider : SymmetricCryptoProvider
     {
         private DESProvider() { }
         private static DESProvider instance;
@@ -38,28 +38,6 @@ namespace ACLibrary.Crypto.CryptoProviders
             }
         }
 
-        private CipherInitiator ci = () => new TripleDESCryptoServiceProvider();
-
-        /// <summary>
-        /// The Encryption method.
-        /// </summary>
-        /// <param name="plainText">The string to encrypt.</param>
-        /// <param name="password">The password.</param>
-        /// <returns>The encrypted string.</returns>
-        public string EncryptString(string plainText, string password)
-        {
-            return Encrypt(plainText, password, ci);
-        }
-
-        /// <summary>
-        /// The Decryption method.
-        /// </summary>
-        /// <param name="encryptedText">The string to decrypt.</param>
-        /// <param name="password">The password.</param>
-        /// <returns>The decrypted string.</returns>
-        public string DecryptString(string encryptedText, string password)
-        {
-            return Decrypt(encryptedText, password, ci);
-        }
+        protected override SymmetricAlgorithm InitCipher() => new TripleDESCryptoServiceProvider();
     }
 }

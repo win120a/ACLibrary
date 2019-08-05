@@ -29,7 +29,7 @@ namespace ACLibrary.Crypto.CryptoProviders
     /// <summary>
     /// The RC2 encryption provider.
     /// </summary>
-    public class RC2Provider : SymmetricCryptoProvider, IStringCryptoProvider
+    public class RC2Provider : SymmetricCryptoProvider
     {
         private RC2Provider() { }
         private static RC2Provider instance;
@@ -46,28 +46,6 @@ namespace ACLibrary.Crypto.CryptoProviders
             }
         }
 
-        private CipherInitiator ci = () => new RC2CryptoServiceProvider();
-
-        /// <summary>
-        /// The Encryption method.
-        /// </summary>
-        /// <param name="plainText">The string to encrypt.</param>
-        /// <param name="password">The password.</param>
-        /// <returns>The encrypted string.</returns>
-        public string EncryptString(string plainText, string password)
-        {
-            return Encrypt(plainText, password, ci);
-        }
-
-        /// <summary>
-        /// The Decryption method.
-        /// </summary>
-        /// <param name="encryptedText">The string to decrypt.</param>
-        /// <param name="password">The password.</param>
-        /// <returns>The decrypted string.</returns>
-        public string DecryptString(string encryptedText, string password)
-        {
-            return Decrypt(encryptedText, password, ci);
-        }
+        protected override SymmetricAlgorithm InitCipher() => new RC2CryptoServiceProvider();
     }
 }

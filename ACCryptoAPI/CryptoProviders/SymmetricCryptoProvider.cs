@@ -26,7 +26,10 @@ using System.Text;
 
 namespace ACLibrary.Crypto.CryptoProviders
 {
-    public abstract class SymmetricCryptoProvider
+    /*
+     * A thought that tries to remove the dependence of CipherInitiator, and implement the IStringCryptoProvider.
+     */
+    public abstract class SymmetricCryptoProvider : IStringCryptoProvider
     {
         protected void InitCipherObject(SymmetricAlgorithm alg, string key)
         {
@@ -35,9 +38,9 @@ namespace ACLibrary.Crypto.CryptoProviders
             alg.IV = new byte[alg.BlockSize / 8];
         }
 
-        public delegate SymmetricAlgorithm CipherInitiator();
+        protected abstract SymmetricAlgorithm InitCipher();
 
-        internal string Encrypt(string plainText, string password, CipherInitiator ci)
+        public string EncryptString(string plainText, string password)
         {
             // first we convert the plain text into a byte array
             byte[] plainTextBytes = Encoding.Unicode.GetBytes(plainText);
@@ -46,7 +49,7 @@ namespace ACLibrary.Crypto.CryptoProviders
             MemoryStream myStream = new MemoryStream();
 
             // create the key and initialization vector using the password
-            SymmetricAlgorithm sa = ci();
+            SymmetricAlgorithm sa = InitCipher();
             InitCipherObject(sa, password);
 
             // create the encoder that will write to the memory stream
@@ -60,7 +63,7 @@ namespace ACLibrary.Crypto.CryptoProviders
             return Convert.ToBase64String(myStream.ToArray());
         }
 
-        internal string Decrypt(string encryptedText, string password, CipherInitiator ci)
+        public string DecryptString(string encryptedText, string password)
         {
             // convert our encrypted string to a byte array
             byte[] encryptedTextBytes = Convert.FromBase64String(encryptedText);
@@ -69,7 +72,7 @@ namespace ACLibrary.Crypto.CryptoProviders
             MemoryStream myStream = new MemoryStream();
 
             // create the key and initialization vector using the password
-            SymmetricAlgorithm sa = ci();
+            SymmetricAlgorithm sa = InitCipher();
             InitCipherObject(sa, password);
 
             // create our decoder to write to the stream
